@@ -96,6 +96,7 @@
 \newcommand{\MSbar}{\ensuremath{\overline{\text{MS}}}}
 \newcommand{\SM}{\ensuremath{\text{SM}}}
 \newcommand{\SplitMSSM}{\ensuremath{\text{SM+split}}\xspace}
+\newcommand{\SplitTHDM}{\ensuremath{\text{2HDM+split}}\xspace}
 \newcommand{\MSSM}{\ensuremath{\text{MSSM}}}
 \newcommand{\THDM}{\ensuremath{\text{2HDM}}\xspace}
 \newcommand{\hc}{\ensuremath{\text{h.c.}}}
@@ -328,6 +329,113 @@
       \end{tikzpicture}
     }{\footnotesize{VI light $h$, $\chi_i$, $\tilde{g}$,}}}{\footnotesize{intermediate $H$, $A$, $H^{\pm}$}}
   \end{figure}
+\end{frame}
+
+\begin{frame}{IV light $h_i$, $A$, $H^{\pm}$}
+\begin{align*}
+\begin{split}
+  \Lag_\THDM \supset
+  &-m_1^2 |H_1|^2 + m_2^2 |H_2|^2
+  - \lambda_1 (H_1^\dagger H_1)^2
+  - \lambda_2 (H_2^\dagger H_2)^2 \\
+  &- \lambda_3 |H_1|^2 |H_2|^2
+  - \lambda_4 |H_2^\dagger H_1|^2\\
+  &+\Bigg[ m_{12}^2 H_1^\dagger H_2
+  - \frac{\lambda_5}{2} (H_1^\dagger H_2)^2
+  - \lambda_6 (H_1^\dagger H_1)(H_1^\dagger H_2)\\
+  &\qquad- \lambda_7 (H_2^\dagger H_2)(H_1^\dagger H_2)
+  + \hc \Bigg] .
+\end{split}
+\end{align*}
+\end{frame}
+
+\begin{frame}{IV light $h_i$, $A$, $H^{\pm}$}
+  \emph{Input parameters:}
+  \begin{align*}
+  \tan\beta^{\MSbar}(M_t), A_t^{\DRbar}(\MS), m_A^{\MSbar}(M_t),
+  \mu^{\DRbar}(\MS), M_i^{\DRbar}(\MS),
+  (m_{\tilde{f}}^2)^{\DRbar}_{ij}(\MS)
+  \end{align*}
+  \emph{Threshold correction:}
+  \begin{align*}
+    \lambda_1(\MS) &= \frac{1}{4}\left(\frac{3}{5} g_1^2 + g_2^2\right) + \DlTHDM{1}{1} + \DlTHDM{1}{2}\\
+    \lambda_2(\MS) &= \frac{1}{4}\left(\frac{3}{5} g_1^2 + g_2^2\right) + \DlTHDM{2}{1} + \DlTHDM{2}{2}\\
+    \lambda_3(\MS) &= -\frac{1}{4} \left(\frac{3}{5}g_1^2 + g_2^2\right) + \frac{g_2^2}{2} + \DlTHDM{3}{1} + \DlTHDM{3}{2}\\
+    \lambda_4(\MS) &= -\frac{g_2^2}{2} + \DlTHDM{4}{1} + \DlTHDM{4}{2}\\
+    \lambda_5(\MS) &= 0 + \DlTHDM{5}{1} + \DlTHDM{5}{2}\\
+    \lambda_6(\MS) &= 0 + \DlTHDM{6}{1} + \DlTHDM{6}{2}\\
+    \lambda_7(\MS) &= 0 + \DlTHDM{7}{1} + \DlTHDM{7}{2}
+  \end{align*}
+  \hfill\bigcite{0901.2065, 1508.00576}
+\end{frame}
+
+\begin{frame}{V light $h_i$, $A$, $H^{\pm}$, intermediate $\chi_i$, $\tilde{g}$}
+\begin{align*}
+  \Lag_{\SplitTHDM} &= \Lag_{\THDM} + \Lag_\text{split}, \\
+\begin{split}
+  \Lag_\text{split} \supset
+  &- \frac{M_1}{2} \tilde{B}\tilde{B}
+  - \frac{M_2}{2} \tilde{W}^i\tilde{W}^i
+  - \frac{M_3}{2} \tilde{g}^a\tilde{g}^a
+  - \mu \tilde{H}_u\cdot \tilde{H}_d \\
+  &-\frac{H_2^\dagger}{\sqrt{2}} \left( \gSplitTHDM{2u} \sigma^i\tilde{W}^i
+     +\gpSplitTHDM{2u} \tilde{B} \right)\tilde{H}_u \\
+  &-\frac{H_1}{\sqrt{2}} \cdot  \left( -\gSplitTHDM{1d} \sigma^i\tilde{W}^i
+     + \gpSplitTHDM{1d} \tilde{B} \right) \tilde{H}_d
+  + \hc
+\end{split}
+\end{align*}
+\end{frame}
+
+\begin{frame}{V light $h_i$, $A$, $H^{\pm}$, intermediate $\chi_i$, $\tilde{g}$}
+  \emph{Input parameters:}
+  \begin{align*}
+  \tan\beta^{\MSbar}(M_t), A_t^{\DRbar}(\MS), m_A^{\MSbar}(M_t),
+  \mu^{\MSbar}(\Qsplit), M_i^{\MSbar}(\Qsplit),
+  (m_{\tilde{f}}^2)^{\DRbar}_{ij}(\MS)
+  \end{align*}
+  \emph{Threshold correction:}
+  \begin{align*}
+    \tilde\lambda_1 &= \frac{1}{4}\left(\frac{3}{5} g_1^2 + g_2^2\right) + \DlSplitTHDM{1}{1} + \DlSplitTHDM{1}{2},\\
+    \tilde\lambda_2 &= \frac{1}{4}\left(\frac{3}{5} g_1^2 + g_2^2\right) + \DlSplitTHDM{2}{1} + \DlSplitTHDM{2}{2},\\
+    \tilde\lambda_3 &= -\frac{1}{4} \left(\frac{3}{5}g_1^2 + g_2^2\right) + \frac{g_2^2}{2} + \DlSplitTHDM{3}{1} + \DlSplitTHDM{3}{2},\\
+    \tilde\lambda_4 &= -\frac{g_2^2}{2} + \DlSplitTHDM{4}{1} + \DlSplitTHDM{4}{2},\\
+    \tilde\lambda_i &= 0 + \DlSplitTHDM{i}{1} + \DlSplitTHDM{i}{2}, \quad (i = 5,6,7)\\
+    \gpSplitTHDM{1d} &= \sqrt{\frac{3}{5}} g_1, \qquad
+    \gSplitTHDM{1d}  = g_2, \qquad
+    \gpSplitTHDM{2u} = \sqrt{\frac{3}{5}} g_1, \qquad
+    \gSplitTHDM{2u}  = g_2
+  \end{align*}
+  \hfill\bigcite{0901.2065, 1508.00576}
+\end{frame}
+
+\begin{frame}{VI light $h$, $\chi_i$, $\tilde{g}$, intermediate $H$, $A$, $H^{\pm}$}
+  \emph{Input parameters:}
+  \begin{align*}
+  \tan\beta^{\MSbar}(\QTHDM), A_t^{\DRbar}(\MS), m_A^{\MSbar}(\QTHDM),
+  \mu^{\MSbar}(M_Z), M_i^{\MSbar}(M_Z),
+  (m_{\tilde{f}}^2)^{\DRbar}_{ij}(\MS)
+  \end{align*}
+  \emph{Threshold correction:}
+  \begin{align*}
+    \begin{split}
+      \tilde\lambda &= 2 \tilde\lambda_1 c_\beta^4 + 2
+      \tilde\lambda_2 s_\beta^4
+      + 2 \left(\tilde\lambda_3 +
+        \tilde\lambda_4 +
+        \tilde\lambda_5 \right) c_\beta^2 s_\beta^2
+      + 4 \tilde\lambda_6 c_\beta^3 s_\beta + 4
+      \tilde\lambda_7 c_\beta s_\beta^3 \\
+      &\phantom{=\;} + \Delta\lambda^{\SplitTHDM-\SplitMSSM},
+    \end{split} \\
+    \mu^{\SplitMSSM} &= \mu^{\SplitTHDM}, \\
+    M_i^{\SplitMSSM} &= M_i^{\SplitTHDM}, \\
+    \gSplitMSSM{1u} &= \gpSplitTHDM{2u} \sin\beta + \DgSplitTHDMSplit{1u},\\
+    \gSplitMSSM{1d} &= \gpSplitTHDM{1d} \cos\beta + \DgSplitTHDMSplit{1d},\\
+    \gSplitMSSM{2u} &= \gSplitTHDM{2u} \sin\beta + \DgSplitTHDMSplit{2u},\\
+    \gSplitMSSM{2d} &= \gSplitTHDM{1d} \cos\beta + \DgSplitTHDMSplit{2d}.
+  \end{align*}
+  \hfill\bigcite{0901.2065, 1508.00576}
 \end{frame}
 
 \section{Uncertainty estimate}
