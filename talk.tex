@@ -98,6 +98,7 @@
 \newcommand{\SplitMSSM}{\ensuremath{\text{SM+split}}\xspace}
 \newcommand{\SplitTHDM}{\ensuremath{\text{2HDM+split}}\xspace}
 \newcommand{\MSSM}{\ensuremath{\text{MSSM}}}
+\newcommand{\EFT}{\ensuremath{\text{EFT}}\xspace}
 \newcommand{\THDM}{\ensuremath{\text{2HDM}}\xspace}
 \newcommand{\hc}{\ensuremath{\text{h.c.}}}
 \newcommand{\Qsplit}{\ensuremath{Q_\text{split}}\xspace}
@@ -261,6 +262,49 @@
   \end{figure}
 \end{frame}
 
+\section{Uncertainty estimate}
+
+\begin{frame}{Contents}
+  \tableofcontents[currentsection]  
+\end{frame}
+
+\begin{frame}{Considered sources of uncertainty}
+\emph{SM uncertainty}:
+  \begin{align*}
+    \Delta M_h^{(\SM)} &=
+    \left| M_h(y_t^{(2L)}) - M_h(y_t^{(3L)}) \right|
+                         + \max_{Q\in[M_t/2, 2M_t]}\left| M_h - M_h(Q) \right|
+  \end{align*}
+\emph{EFT uncertainty}:
+  \begin{align*}
+    \Delta M_h^{(\EFT)} = \left| M_h - M_h(\Delta\lambda_i \rightarrow \Delta\lambda_i [1 +
+    v^2/\MS^2]) \right|
+  \end{align*}
+\emph{SUSY uncertainty}:
+  \begin{align*}
+    \Delta M_h^{(\MSSM)} = \left| M_h - M_h(y_t^{\EFT}(\MS) \rightarrow y_t^{\EFT}(\MS) [1 +
+    \Delta y_t]) \right|
+  \end{align*}
+\emph{Parametric uncertainty}:
+  \begin{align*}
+    \Delta M_h^{(\text{par})} &= |M_h - M_h(M_t \pm \sigma_{M_t})|
+                                + \left|M_h - M_h(\alpha_s(M_Z) \pm \sigma_{\alpha_s})\right|\\
+    \sigma_{M_t} &= 0.98\eh{GeV}, \qquad
+    \sigma_{\alpha_s} = 0.0006
+  \end{align*}
+% \emph{Combination:}
+% \begin{align*}
+%   \Delta M_h = | \Delta M_h^{(\SM)} | + | \Delta M_h^{(\EFT)} |
+%   + | \Delta M_h^{(\MSSM)} | + | M_h^{(\text{par})} | .  
+% \end{align*}
+\end{frame}
+
+\begin{frame}{Individual uncertainties}
+  \includegraphics[width=\textwidth]{{{plots/THDM/THDMIIMSSMBCFull_uncertainty_MS_MA-800_uncertainty_advanced}}}
+\end{frame}
+
+\section{Results}
+
 \begin{frame}{IV light $h_i$, $A$, $H^{\pm}$}
   \includegraphics[width=0.49\textwidth]{{{plots/THDM/THDMIIMSSMBCFull_MS_MA_Xt-2.44949_TB-2}}}\hfill
   \includegraphics[width=0.49\textwidth]{{{plots/THDM/THDMIIMSSMBCFull_TB_MS_Xt-2.44949_MA-800}}}\\
@@ -281,12 +325,6 @@
   left: $\tan\beta = 2$, right: $m_A = 2\eh{TeV}$
 \end{frame}
 
-\section{Uncertainty estimate}
-
-\begin{frame}{Contents}
-  \tableofcontents[currentsection]  
-\end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Summary}
@@ -304,7 +342,7 @@
   \end{center}
 \end{frame}
 
-\begin{frame}{I high-scale SUSY}
+\begin{frame}[noframenumbering]{I high-scale SUSY}
   \emph{Input parameters:}
   \begin{align*}
   \tan\beta^{\DRbar}(\MS), A_t^{\DRbar}(\MS), m_A^{\DRbar}(\MS),
@@ -319,7 +357,7 @@
   \hfill\bigcite{1407.4081, 1703.08166}
 \end{frame}
 
-\begin{frame}{II light $\chi_i$, $\tilde{g}$}
+\begin{frame}[noframenumbering]{II light $\chi_i$, $\tilde{g}$}
 \begin{align*}
   \Lag_{\SplitMSSM} &= \Lag_{\SM} + \Lag_\text{split}, \\
 \begin{split}
@@ -339,7 +377,7 @@
 \end{align*}
 \end{frame}
 
-\begin{frame}{II light $\chi_i$, $\tilde{g}$}
+\begin{frame}[noframenumbering]{II light $\chi_i$, $\tilde{g}$}
   \emph{Input parameters:}
   \begin{align*}
     \tan\beta^{\DRbar}(\MS), A_t^{\DRbar}(\MS), m_A^{\DRbar}(\MS),
@@ -358,7 +396,7 @@
   \hfill\bigcite{1407.4081}
 \end{frame}
 
-\begin{frame}{III intermediate  $\chi_i$, $\tilde{g}$}
+\begin{frame}[noframenumbering]{III intermediate  $\chi_i$, $\tilde{g}$}
   \emph{Input parameters:}
   \begin{align*}
   \tan\beta^{\DRbar}(\MS), A_t^{\DRbar}(\MS), m_A^{\DRbar}(\MS),
@@ -374,7 +412,7 @@
   \hfill\bigcite{1407.4081}
 \end{frame}
 
-\begin{frame}{IV light $h_i$, $A$, $H^{\pm}$}
+\begin{frame}[noframenumbering]{IV light $h_i$, $A$, $H^{\pm}$}
 \begin{align*}
 \begin{split}
   \Lag_\THDM \supset
@@ -392,7 +430,7 @@
 \end{align*}
 \end{frame}
 
-\begin{frame}{IV light $h_i$, $A$, $H^{\pm}$}
+\begin{frame}[noframenumbering]{IV light $h_i$, $A$, $H^{\pm}$}
   \emph{Input parameters:}
   \begin{align*}
   \tan\beta^{\MSbar}(M_t), A_t^{\DRbar}(\MS), m_A^{\MSbar}(M_t),
@@ -412,7 +450,7 @@
   \hfill\bigcite{0901.2065, 1508.00576}
 \end{frame}
 
-\begin{frame}{V light $h_i$, $A$, $H^{\pm}$, intermediate $\chi_i$, $\tilde{g}$}
+\begin{frame}[noframenumbering]{V light $h_i$, $A$, $H^{\pm}$, intermediate $\chi_i$, $\tilde{g}$}
 \begin{align*}
   \Lag_{\SplitTHDM} &= \Lag_{\THDM} + \Lag_\text{split}, \\
 \begin{split}
@@ -430,7 +468,7 @@
 \end{align*}
 \end{frame}
 
-\begin{frame}{V light $h_i$, $A$, $H^{\pm}$, intermediate $\chi_i$, $\tilde{g}$}
+\begin{frame}[noframenumbering]{V light $h_i$, $A$, $H^{\pm}$, intermediate $\chi_i$, $\tilde{g}$}
   \emph{Input parameters:}
   \begin{align*}
   \tan\beta^{\MSbar}(M_t), A_t^{\DRbar}(\MS), m_A^{\MSbar}(M_t),
@@ -452,7 +490,7 @@
   \hfill\bigcite{0901.2065, 1508.00576}
 \end{frame}
 
-\begin{frame}{VI light $h$, $\chi_i$, $\tilde{g}$, intermediate $H$, $A$, $H^{\pm}$}
+\begin{frame}[noframenumbering]{VI light $h$, $\chi_i$, $\tilde{g}$, intermediate $H$, $A$, $H^{\pm}$}
   \emph{Input parameters:}
   \begin{align*}
   \tan\beta^{\MSbar}(\QTHDM), A_t^{\DRbar}(\MS), m_A^{\MSbar}(\QTHDM),
