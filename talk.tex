@@ -222,6 +222,88 @@
   \end{figure}
 \end{frame}
 
+\begin{frame}{Scenarios with 2 light/intermediate Higgs doublets}
+  \begin{figure}
+    \centering
+    \stackunder[1em]{%
+      \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
+        \node at (1.5,4) {MSSM};
+        \draw (0,3) -- (3,3);
+        \node at (1.5,2) {2HDM-II};
+        \draw (0,1) -- (3,1);
+        \node at (1.5,0) {SM(5)};
+      \end{tikzpicture}
+    }{\footnotesize{IV light $h_i$, $A$, $H^{\pm}$}}\hfill
+    \stackunder{%
+    \stackunder[1em]{%
+      \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
+        \node at (2,4) {MSSM};
+        \draw (0,3) -- (4,3) node[anchor=west] {$\MS$};
+        \node at (2,2.5) {2HDM-II + split};
+        \draw (0,2) -- (4,2) node[anchor=west] {$\Qsplit$};
+        \node at (2,1.5) {2HDM-II};
+        \draw (0,1) -- (4,1) node[anchor=west] {$M_Z$};
+        \node at (2,0) {SM(5)};
+      \end{tikzpicture}
+    }{\footnotesize{V light $h_i$, $A$, $H^{\pm}$,}}}{\footnotesize{intermediate $\chi_i$, $\tilde{g}$}}\hfill
+    \stackunder{%
+    \stackunder[1em]{%
+      \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
+        \node at (2,4) {MSSM};
+        \draw (0,3) -- (4,3) node[anchor=west] {$\MS$};
+        \node at (2,2.5) {2HDM-II + split};
+        \draw (0,2) -- (4,2) node[anchor=west] {$\QTHDM$};
+        \node at (2,1.5) {SM + split};
+        \draw (0,1) -- (4,1) node[anchor=west] {$M_Z$};
+        \node at (2,0) {SM(5)};
+      \end{tikzpicture}
+    }{\footnotesize{VI light $h$, $\chi_i$, $\tilde{g}$,}}}{\footnotesize{intermediate $H$, $A$, $H^{\pm}$}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{IV light $h_i$, $A$, $H^{\pm}$}
+  \includegraphics[width=0.49\textwidth]{{{plots/THDM/THDMIIMSSMBCFull_MS_MA_Xt-2.44949_TB-2}}}\hfill
+  \includegraphics[width=0.49\textwidth]{{{plots/THDM/THDMIIMSSMBCFull_TB_MS_Xt-2.44949_MA-800}}}\\
+  $X_t = \sqrt{6}\MS$\\ left: $\tan\beta = 2$, right: $m_A = 800\eh{GeV}$
+\end{frame}
+
+\begin{frame}{V light $h_i$, $A$, $H^{\pm}$, intermediate $\chi_i$, $\tilde{g}$}
+  \includegraphics[width=0.49\textwidth]{{{plots/THDM/SplitTHDMTHDMTower_MS_MA_Xt-2.44949_TB-2_Mu-M12-M3-2000}}}\hfill
+  \includegraphics[width=0.49\textwidth]{{{plots/THDM/SplitTHDMTHDMTower_TB_MS_Xt-2.44949_MA-800_Mu-M12-M3-2000}}}\\
+  $X_t = \sqrt{6}\MS$, $\mu = M_i = 2\eh{TeV}$\\
+  left: $\tan\beta = 2$, right: $m_A = 800\eh{GeV}$
+\end{frame}
+
+\begin{frame}{VI light $h$, $\chi_i$, $\tilde{g}$, intermediate $H$, $A$, $H^{\pm}$}
+  \includegraphics[width=0.49\textwidth]{{{plots/THDM/SplitTHDMSplitTower_MS_MA_Xt-2.44949_TB-2_Mu-M12-M3-1000}}}\hfill
+  \includegraphics[width=0.49\textwidth]{{{plots/THDM/SplitTHDMSplitTower_TB_MS_Xt-2.44949_MA-2000_Mu-M12-M3-1000}}}\\
+  $X_t = \sqrt{6}\MS$, $\mu = M_i = 1\eh{TeV}$\\
+  left: $\tan\beta = 2$, right: $m_A = 2\eh{TeV}$
+\end{frame}
+
+\section{Uncertainty estimate}
+
+\begin{frame}{Contents}
+  \tableofcontents[currentsection]  
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Summary}
+
+\begin{frame}{Summary}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% backup slides
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[noframenumbering]
+  \begin{center}
+    \Huge Backup
+  \end{center}
+\end{frame}
+
 \begin{frame}{I high-scale SUSY}
   \emph{Input parameters:}
   \begin{align*}
@@ -290,45 +372,6 @@
   g_i^\SplitMSSM(\Qsplit) &= g_i^\SM(\Qsplit) (1 + \Delta g_i)
   \end{align*}
   \hfill\bigcite{1407.4081}
-\end{frame}
-
-\begin{frame}{Scenarios with 2 light/intermediate Higgs doublets}
-  \begin{figure}
-    \centering
-    \stackunder[1em]{%
-      \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
-        \node at (1.5,4) {MSSM};
-        \draw (0,3) -- (3,3);
-        \node at (1.5,2) {2HDM-II};
-        \draw (0,1) -- (3,1);
-        \node at (1.5,0) {SM(5)};
-      \end{tikzpicture}
-    }{\footnotesize{IV light $h_i$, $A$, $H^{\pm}$}}\hfill
-    \stackunder{%
-    \stackunder[1em]{%
-      \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
-        \node at (2,4) {MSSM};
-        \draw (0,3) -- (4,3) node[anchor=west] {$\MS$};
-        \node at (2,2.5) {2HDM-II + split};
-        \draw (0,2) -- (4,2) node[anchor=west] {$\Qsplit$};
-        \node at (2,1.5) {2HDM-II};
-        \draw (0,1) -- (4,1) node[anchor=west] {$M_Z$};
-        \node at (2,0) {SM(5)};
-      \end{tikzpicture}
-    }{\footnotesize{V light $h_i$, $A$, $H^{\pm}$,}}}{\footnotesize{intermediate $\chi_i$, $\tilde{g}$}}\hfill
-    \stackunder{%
-    \stackunder[1em]{%
-      \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
-        \node at (2,4) {MSSM};
-        \draw (0,3) -- (4,3) node[anchor=west] {$\MS$};
-        \node at (2,2.5) {2HDM-II + split};
-        \draw (0,2) -- (4,2) node[anchor=west] {$\QTHDM$};
-        \node at (2,1.5) {SM + split};
-        \draw (0,1) -- (4,1) node[anchor=west] {$M_Z$};
-        \node at (2,0) {SM(5)};
-      \end{tikzpicture}
-    }{\footnotesize{VI light $h$, $\chi_i$, $\tilde{g}$,}}}{\footnotesize{intermediate $H$, $A$, $H^{\pm}$}}
-  \end{figure}
 \end{frame}
 
 \begin{frame}{IV light $h_i$, $A$, $H^{\pm}$}
@@ -436,29 +479,6 @@
     \gSplitMSSM{2d} &= \gSplitTHDM{1d} \cos\beta + \DgSplitTHDMSplit{2d}.
   \end{align*}
   \hfill\bigcite{0901.2065, 1508.00576}
-\end{frame}
-
-\section{Uncertainty estimate}
-
-\begin{frame}{Contents}
-  \tableofcontents[currentsection]  
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Summary}
-
-\begin{frame}{Summary}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% backup slides
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[noframenumbering]
-  \begin{center}
-    \Huge Backup
-  \end{center}
 \end{frame}
 
 \begin{frame}[noframenumbering]{Determination of MSSM parameters}
