@@ -95,10 +95,13 @@
 \newcommand{\DRbar}{\ensuremath{\overline{\text{DR}}}}
 \newcommand{\MSbar}{\ensuremath{\overline{\text{MS}}}}
 \newcommand{\SM}{\ensuremath{\text{SM}}}
+\newcommand{\SplitMSSM}{\ensuremath{\text{SM+split}}\xspace}
 \newcommand{\MSSM}{\ensuremath{\text{MSSM}}}
 \newcommand{\THDM}{\ensuremath{\text{2HDM}}\xspace}
+\newcommand{\hc}{\ensuremath{\text{h.c.}}}
 \newcommand{\Qsplit}{\ensuremath{Q_\text{split}}\xspace}
 \newcommand{\QTHDM}{\ensuremath{Q_\text{\THDM}}\xspace}
+\newcommand{\Lag}{\ensuremath{\mathcal{L}}}
 \newcommand{\pole}{\ensuremath{\text{pole}}}
 \newcommand{\tree}{\ensuremath{\text{tree}}}
 \newcommand{\fsstar}{\textbf{*}}
@@ -112,6 +115,24 @@
 \newcommand{\ab}{\alpha_b}
 \newcommand{\atau}{\alpha_\tau}
 \newcommand{\as}{\alpha_s}
+
+% threshold corrections HSSUSY:
+\newcommand{\DlHSSUSY}[1]{\ensuremath{\Delta\lambda^{#1L}}}
+% threshold corrections SplitMSSM:
+\newcommand{\DlSplitMSSM}[1]{\ensuremath{\Delta\tilde{\lambda}^{\text{#1L}}}}
+\newcommand{\gSplitMSSM}[1]{\ensuremath{\tilde{g}_{#1}}}
+\newcommand{\DgSplitMSSM}[1]{\ensuremath{\Delta\tilde{g}_{#1}^{\text{1L}}}}
+% threshold correction SplitMSSM-SM tower:
+\newcommand{\DlSplitMSSMTower}{\Delta\lambda^{\text{\SplitMSSM--SM,1L}}}
+% threshold correction THDM:
+\newcommand{\DlTHDM}[2]{\Delta\lambda_{#1}^{\text{#2L}}}
+% threshold correction SplitTHDMTHDMTower:
+\newcommand{\DlSplitTHDM}[2]{\Delta\tilde\lambda_{#1}^{\text{#2L}}}
+\newcommand{\gSplitTHDM}[1]{\ensuremath{\tilde{h}_{#1}}}
+\newcommand{\gpSplitTHDM}[1]{\ensuremath{\tilde{h}_{#1}^{\prime}}}
+\newcommand{\DlSplitTHDMTHDM}[2]{\Delta\lambda_{#1}^{\text{\SplitTHDM--\THDM,{#2}L}}}
+% threshold correction SplitTHDMSplitTower:
+\newcommand{\DgSplitTHDMSplit}[1]{\Delta\tilde{g}_{#1}^{\text{\SplitTHDM--\SplitMSSM,1L}}}
 
 % set look of slides
 \usetheme{Madrid}
@@ -198,6 +219,76 @@
       \end{tikzpicture}
     }{\footnotesize{III intermediate  $\chi_i$, $\tilde{g}$}}
   \end{figure}
+\end{frame}
+
+\begin{frame}{I high-scale SUSY}
+  \emph{Input parameters:}
+  \begin{align*}
+  \tan\beta^{\DRbar}(\MS), A_t^{\DRbar}(\MS), m_A^{\DRbar}(\MS),
+  \mu^{\DRbar}(\MS), M_i^{\DRbar}(\MS),
+  (m_{\tilde{f}}^2)^{\DRbar}_{ij}(\MS)
+  \end{align*}
+  \emph{Threshold correction:}
+  \begin{align*}
+    \lambda(\MS) &= \frac{1}{4}\left(\frac{3}{5} g_1^2 +
+                   g_2^2\right) \cos^22\beta + \DlHSSUSY{1} + \DlHSSUSY{2}
+  \end{align*}
+  \hfill\bigcite{1407.4081, 1703.08166}
+\end{frame}
+
+\begin{frame}{II light $\chi_i$, $\tilde{g}$}
+\begin{align*}
+  \Lag_{\SplitMSSM} &= \Lag_{\SM} + \Lag_\text{split}, \\
+\begin{split}
+  \Lag_\text{split} \supset
+  &- \frac{M_1}{2} \tilde{B}\tilde{B}
+  - \frac{M_2}{2} \tilde{W}^i\tilde{W}^i
+  - \frac{M_3}{2} \tilde{g}^a\tilde{g}^a
+  - \mu \tilde{H}_u\cdot \tilde{H}_d \\
+  &-\frac{H^\dagger}{\sqrt{2}} \left(
+    \gSplitMSSM{2u} \sigma^i\tilde{W}^i + \gSplitMSSM{1u} \tilde{B}
+  \right)\tilde{H}_u \\
+  &-\frac{H}{\sqrt{2}} \cdot  \left(
+    -\gSplitMSSM{2d} \sigma^i\tilde{W}^i + \gSplitMSSM{1d} \tilde{B}
+  \right) \tilde{H}_d
+  + \hc
+\end{split}
+\end{align*}
+\end{frame}
+
+\begin{frame}{II light $\chi_i$, $\tilde{g}$}
+  \emph{Input parameters:}
+  \begin{align*}
+    \tan\beta^{\DRbar}(\MS), A_t^{\DRbar}(\MS), m_A^{\DRbar}(\MS),
+    \mu^{\MSbar}(M_Z), M_i^{\MSbar}(M_Z),
+    (m_{\tilde{f}}^2)^{\DRbar}_{ij}(\MS)
+  \end{align*}
+  \emph{Threshold correction:}
+  \begin{align*}
+    \tilde\lambda(\MS) &= \frac{1}{4}\left(\frac{3}{5} g_1^2 + g_2^2\right)
+    \cos^22\beta + \DlSplitMSSM{1} + \DlSplitMSSM{2} ,\\
+    \gSplitMSSM{1u}(\MS) &= \sqrt{\frac{3}{5}} g_1 \sin\beta + \DgSplitMSSM{1u},\\
+    \gSplitMSSM{1d}(\MS) &= \sqrt{\frac{3}{5}} g_1 \cos\beta + \DgSplitMSSM{1d},\\
+    \gSplitMSSM{2u}(\MS) &= g_2 \sin\beta + \DgSplitMSSM{2u},\\
+    \gSplitMSSM{2d}(\MS) &= g_2 \cos\beta + \DgSplitMSSM{2d}
+  \end{align*}
+  \hfill\bigcite{1407.4081}
+\end{frame}
+
+\begin{frame}{III intermediate  $\chi_i$, $\tilde{g}$}
+  \emph{Input parameters:}
+  \begin{align*}
+  \tan\beta^{\DRbar}(\MS), A_t^{\DRbar}(\MS), m_A^{\DRbar}(\MS),
+  \mu^{\MSbar}(\Qsplit), M_i^{\MSbar}(\Qsplit),
+  (m_{\tilde{f}}^2)^{\DRbar}_{ij}(\MS)
+  \end{align*}
+  \emph{Threshold correction:}
+  \begin{align*}
+  \lambda(\Qsplit) &= \tilde\lambda(\Qsplit) + \Delta\lambda^{\text{1L,}\chi^1} \\
+  y_t^\SplitMSSM(\Qsplit) &= y_t^\SM(\Qsplit) (1 + \Delta g_t^\chi) \\
+  g_i^\SplitMSSM(\Qsplit) &= g_i^\SM(\Qsplit) (1 + \Delta g_i)
+  \end{align*}
+  \hfill\bigcite{1407.4081}
 \end{frame}
 
 \begin{frame}{Scenarios with 2 light/intermediate Higgs doublets}
