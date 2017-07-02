@@ -10,6 +10,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx,import}
+\usepackage{stackengine}
 \usepackage{feynmp}
 \DeclareGraphicsRule{*}{mps}{*}{} 
 \DeclareGraphicsExtensions{.pdf}
@@ -95,6 +96,9 @@
 \newcommand{\MSbar}{\ensuremath{\overline{\text{MS}}}}
 \newcommand{\SM}{\ensuremath{\text{SM}}}
 \newcommand{\MSSM}{\ensuremath{\text{MSSM}}}
+\newcommand{\THDM}{\ensuremath{\text{2HDM}}\xspace}
+\newcommand{\Qsplit}{\ensuremath{Q_\text{split}}\xspace}
+\newcommand{\QTHDM}{\ensuremath{Q_\text{\THDM}}\xspace}
 \newcommand{\pole}{\ensuremath{\text{pole}}}
 \newcommand{\tree}{\ensuremath{\text{tree}}}
 \newcommand{\fsstar}{\textbf{*}}
@@ -127,15 +131,15 @@
 \makeatother
 \usecolortheme{tud}
 
-\title{Higgs mass prediction in supersymmetry with effective field theory techniques}
+\title{Updates on Higgs mass predictions in FlexibleSUSY in the MSSM with different mass hierarchies}
 
 \author[Alexander Voigt]{Alexander Voigt}
 
-\date{Heidelberg, 13.06.2017}
+\date{KUTS-7, 17.07.2017}
 
 \institute[Aachen]{RWTH Aachen}
-\subject{FlexibleSUSY,MSSM,Higgs,FlexibleEFTHiggs}
-\keywords{FlexibleSUSY,MSSM,Higgs,FlexibleEFTHiggs}
+\subject{FlexibleSUSY,MSSM,Higgs,EFT}
+\keywords{FlexibleSUSY,MSSM,Higgs,EFT}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -155,647 +159,85 @@
   \tableofcontents
 \end{frame}
 
-\section{Introduction to supersymmetry}
+\section{Studied scenarios}
 
 \begin{frame}{Contents}
   \tableofcontents[currentsection]  
 \end{frame}
 
-\begin{frame}{Supersymmetry}
-  Still an attractive extension of the Standard Model!\\[1em]
-  \emph{Features:}
-  \begin{itemize}
-  \item can solve the hierarchy problem (heavy BSM particles can give
-    large corrections to the Higgs mass)
-  \item gauge coupling unification at $\sim 10^{16}\eh{GeV}$ (due to
-    extra matter)
-  \item possible connection to super-gravity models and string theory
-    (\ESSM, MRSSM)
-  \item can explain deviation of $(g-2)_\mu$
-  \item can stabilize the electroweak vacuum (see later)
-  \end{itemize}
-  \vspace{1em}
-  \emph{Problem:} LHC has not found any SUSY particles so far
-  $\Rightarrow$ SUSY particles are probably heavy
+\begin{frame}{Scenarios with 1 light Higgs doublet}
+  \begin{figure}
+    \centering
+    \stackunder[1em]{%
+      \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
+        \node at (2,4) {MSSM};
+        \draw (0,3) -- (4,3);
+        \node at (2,2) {SM};
+        \draw (0,1) -- (4,1);
+        \node at (2,0) {SM(5)};
+      \end{tikzpicture}
+    }{\footnotesize{I high-scale SUSY}}\hfill
+    \stackunder[1em]{%
+      \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
+        \node at (2,4) {MSSM};
+        \draw (0,3) -- (4,3);
+        \node at (2,2) {SM + split};
+        \draw (0,1) -- (4,1);
+        \node at (2,0) {SM(5)};
+      \end{tikzpicture}
+    }{\footnotesize{II light $\chi_i$, $\tilde{g}$}}\hfill
+    \stackunder[1em]{%
+      \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
+        \node at (2,4) {MSSM};
+        \draw (0,3) -- (4,3) node[anchor=west] {$\MS$};
+        \node at (2,2.5) {SM + split};
+        \draw (0,2) -- (4,2) node[anchor=west] {$\Qsplit$};
+        \node at (2,1.5) {SM};
+        \draw (0,1) -- (4,1) node[anchor=west] {$M_Z$};
+        \node at (2,0) {SM(5)};
+      \end{tikzpicture}
+    }{\footnotesize{III intermediate  $\chi_i$, $\tilde{g}$}}
+  \end{figure}
 \end{frame}
 
-\begin{frame}{Minimal supersymmetry (MSSM)}
-  MSSM = supersymmetric extension of the 2HDM \\[1em]
-  Particle content (superfields):
-  \begin{equation*}
-    \begin{aligned}
-      \hat{Q}  &:\textstyle (\mathbf{     3} ,\mathbf{2}, \frac{1}{6}) ,
-      &\hat{u}^c&:\textstyle (\bar{\mathbf{3}},\mathbf{1},-\frac{2}{3}) ,
-      &\hat{d}^c&:\textstyle (\bar{\mathbf{3}},\mathbf{1}, \frac{1}{3}) ,
-      \\
-      \hat{L}  &:\textstyle (\mathbf{     1} ,\mathbf{2},-\frac{1}{2}) ,
-      &\hat{e}^c&:\textstyle (\mathbf{     1} ,\mathbf{1}, 1          ) ,
-      \\
-      \hat{H}_d&:\textstyle (\mathbf{     1} ,\mathbf{2},-\frac{1}{2}) ,
-      &\hat{H}_u&:\textstyle (\mathbf{     1} ,\mathbf{2}, \frac{1}{2}) ,
-      \\
-      \tilde{B}  &:\textstyle (\mathbf{1},\mathbf{1},0) ,
-      &\tilde{W}  &:\textstyle (\mathbf{1},\mathbf{3},0) ,
-      &\tilde{g}  &:\textstyle (\mathbf{8},\mathbf{1},0)
-    \end{aligned}
-  \end{equation*}
-  Superpotential:
-  \begin{align*}
-    \mathcal{W}_\MSSM &= (Y_u)_{ij} \, \hat{Q}_i\cdot\hat{H}_u \, \hat{u}^c_j
-    + (Y_d)_{ij} \, \hat{Q}_i\cdot\hat{H}_{d} \, \hat{d}^c_j
-    +  (Y_e)_{ij} \, \hat{L}_i\cdot\hat{H}_{d} \, \hat{e}^c_j \\
-    &\phantom{={}} + \mu \hat{H}_u\cdot\hat{H}_{d}
-  \end{align*}
+\begin{frame}{Scenarios with 2 light/intermediate Higgs doublets}
+  \begin{figure}
+    \centering
+    \stackunder[1em]{%
+      \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
+        \node at (1.5,4) {MSSM};
+        \draw (0,3) -- (3,3);
+        \node at (1.5,2) {2HDM-II};
+        \draw (0,1) -- (3,1);
+        \node at (1.5,0) {SM(5)};
+      \end{tikzpicture}
+    }{\footnotesize{IV light $h_i$, $A$, $H^{\pm}$}}\hfill
+    \stackunder{%
+    \stackunder[1em]{%
+      \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
+        \node at (2,4) {MSSM};
+        \draw (0,3) -- (4,3) node[anchor=west] {$\MS$};
+        \node at (2,2.5) {2HDM-II + split};
+        \draw (0,2) -- (4,2) node[anchor=west] {$\Qsplit$};
+        \node at (2,1.5) {2HDM-II};
+        \draw (0,1) -- (4,1) node[anchor=west] {$M_Z$};
+        \node at (2,0) {SM(5)};
+      \end{tikzpicture}
+    }{\footnotesize{V light $h_i$, $A$, $H^{\pm}$,}}}{\footnotesize{intermediate $\chi_i$, $\tilde{g}$}}\hfill
+    \stackunder{%
+    \stackunder[1em]{%
+      \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
+        \node at (2,4) {MSSM};
+        \draw (0,3) -- (4,3) node[anchor=west] {$\MS$};
+        \node at (2,2.5) {2HDM-II + split};
+        \draw (0,2) -- (4,2) node[anchor=west] {$\QTHDM$};
+        \node at (2,1.5) {SM + split};
+        \draw (0,1) -- (4,1) node[anchor=west] {$M_Z$};
+        \node at (2,0) {SM(5)};
+      \end{tikzpicture}
+    }{\footnotesize{VI light $h$, $\chi_i$, $\tilde{g}$,}}}{\footnotesize{intermediate $H$, $A$, $H^{\pm}$}}
+  \end{figure}
 \end{frame}
-
-\begin{frame}{Minimal supersymmetry (MSSM)}
-  SUSY particles have not been observed $\Rightarrow$ SUSY must be
-  broken.  Here we consider soft breaking:
-  \begin{align*}
-    \mathcal{L}_{\MSSM}^\mathsf{soft} &= -\frac12\Big[M_1\bar{\tilde{B}}^0\tilde{B}^0 +
-    M_2\bar{\tilde{W}}\tilde{W} +
-    M_3\bar{\tilde{g}}\tilde{g}\Big] \\
-    &\phantom{={}} - m^2_{H_u}|H_u|^2 - m^2_{H_d}|H_d|^2 - \Big[B\mu \, {H}_u\cdot{H}_{d} +
-    \text{h.c.}\Big] \\
-    &\phantom{={}}
-    -\Big[\tilde{Q}_i^\dagger(m^2_Q)_{ij}\tilde{Q}_j +
-    \tilde{d}_{Ri}^\dagger(m^2_d)_{ij}\tilde{d}_{Rj}
-    +
-    \tilde{u}_{Ri}^\dagger(m^2_u)_{ij}\tilde{u}_{Rj} \\
-    &\phantom{={}}\qquad
-    + \tilde{L}_{i}^\dagger(m^2_L)_{ij}\tilde{L}_{j} +
-    \tilde{e}_{Ri}^\dagger(m^2_e)_{ij}\tilde{e}_{Rj}
-    \Big] \\
-    &\phantom{={}}
-    +\Big[(T_u)_{ij}\tilde{Q}_i \cdot  H_u\tilde{u}^\dagger_{\text{R}j}
-    +
-    (T_d)_{ij}\tilde{Q}_i \cdot H_{d} \tilde{d}^\dagger_{\text{R}j}
-    + (T_e)_{ij}\tilde{L}_i \cdot H_{d}\tilde{e}^\dagger_{\text{R}j} \\
-    &\phantom{={}} \qquad + \text{h.c.}\Big]
-  \end{align*}
-\end{frame}
-
-\begin{frame}{Higgs sector of the MSSM}
-  The two Higgs doublets develop VEVs as
-  \begin{align*}
-    H_d &=
-    \begin{pmatrix}
-      \frac{v_d}{\sqrt{2}} + H_d^0 \\ H_d^-
-    \end{pmatrix} &
-    H_u &=
-    \begin{pmatrix}
-      H_u^+ \\ \frac{v_u}{\sqrt{2}} + H_u^0
-    \end{pmatrix}
-  \end{align*}
-  $\Rightarrow$
-  \begin{align*}
-    m_Z^2 &= \frac{1}{4} (g_Y^2 + g_2^2) v^2, &
-    m_W^2 &= \frac{1}{4} g_2^2 v^2, \\
-    m_t &= y_t v_u / \sqrt{2}, &
-    m_b &= y_b v_d / \sqrt{2}, \\
-    v^2 &:= v_u^2 + v_d^2, & \tan\beta &:= v_u/v_d
-  \end{align*}
-  Mixing of Higgs fields in the CP-conserving MSSM:
-  \begin{align*}
-    \left(\re H_d^0, \re H_u^0\right) &\rightarrow (h, H) \\
-    \left(\im H_d^0, \im H_u^0\right) &\rightarrow (G^0, A) \\
-    \left((H_d^-)^*, H_u^+\right)     &\rightarrow (G^+, H^+)
-  \end{align*}
-\end{frame}
-
-\begin{frame}{Considered SUSY scenarios}
-  In the following I set for simplicity
-  \begin{align*}
-    \begin{split}
-      &(m_f^2)_{ij}(\MS) = \delta_{ij} \MS^2, \quad (f=Q,u,d,L,e) \\
-      &M_i(\MS) = \MS, \quad (i = 1,2,3) \\
-      &\mu(\MS) = \MS , \\
-      &m_A^2(\MS) = \frac{B\mu(\MS)}{\sin\beta(\MS) \cos\beta(\MS)} = \MS^2 , \\
-      &(X_f)_{ij} = (T_f)_{ij}/(Y_f)_{ij} - 
-      \begin{Bmatrix}
-        \mu^*\tan\beta \\ \mu^*\cot\beta
-      \end{Bmatrix}
-      \quad \text{for} \quad \left\{
-        \begin{array}{l}\!\!f = d, e, \\ \!\!f = u,
-        \end{array}
-      \right.
-    \end{split}
-  \end{align*}
-  Abbreviations:\\[0.5em]
-  $X_t := (X_u)_{33}$, $X_b := (X_d)_{33}$, $X_\tau := (X_e)_{33}$,\\
-  $s_\beta := \sin\beta$, $c_\beta := \cos\beta$, $t_\beta := \tan\beta$
-\end{frame}
-
-\begin{frame}{Current limits on SUSY particle masses}
-  \begin{center}
-    \includegraphics[width=\textwidth]{images/ATLAS_SUSY_Summary}
-  \end{center}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Higgs mass calculation in the MSSM}
-
-\subsection{at fixed loop order}
-
-\begin{frame}{Contents}
-  \tableofcontents[
-  currentsection,
-  currentsubsection,
-  subsectionstyle=show/shaded/hide]  
-\end{frame}
-
-\begin{frame}{CP-even Higgs masses MSSM}
-  $\left(\re H_d^0, \re H_u^0\right) \overset{\alpha}{\rightarrow} (h, H)$ with the mass matrix
-  \begin{align*}
-    M =
-    \begin{pmatrix}
-      m_A^2 s_\beta^2 + m_Z^2 c_\beta^2 & -(m_A^2 + m_Z^2) s_\beta c_\beta \\
-      \cdot & m_A^2 c_\beta^2 + m_Z^2 s_\beta^2
-    \end{pmatrix}
-  \end{align*}
-  $\Rightarrow$
-  \begin{align*}
-    m_{h,H}^2 = \frac{1}{2} \left[
-      m_Z^2 + m_A^2 \mp \sqrt{(m_Z^2 + m_A^2)^2 - 4 m_Z^2 m_A^2 c_{2\beta}^2}
-    \right]
-  \end{align*}
-  $\Rightarrow$
-  \begin{align*}
-    m_h^2 < \min(m_Z^2, m_A^2) c_{2\beta}^2
-  \end{align*}
-  If $m_A \gg m_Z$:
-  \begin{align*}
-    m_h^2 \approx m_Z^2 c_{2\beta}^2
-    = \frac{1}{4} (g_Y^2 + g_2^2) v^2 c_{2\beta}^2
-  \end{align*}
-\end{frame}
-
-\begin{frame}{Higgs mass in the CP-conserving MSSM}
-  If $m_A \gg m_Z$:
-  \begin{align*}
-    m_h^2 \approx m_Z^2 c_{2\beta}^2
-    = \frac{1}{4} (g_Y^2 + g_2^2) v^2 c_{2\beta}^2
-  \end{align*}
-  In the MSSM the tree-level Higgs mass is restricted to be smaller
-  than $m_Z$!
-  \\[2em]
-  Q: How can $M_h \approx 125\eh{GeV}$ be possible in the MSSM? \\[1em]
-  A: Large loop corrections are to be expected!
-  \begin{align*}
-    M_h^2 &= m_h^2 + \Delta m_h^2
-    & &\Rightarrow &
-    \Delta m_h^2 &\geq (85\eh{GeV})^2
-  \end{align*}
-\end{frame}
-
-\begin{frame}{Current status of MSSM Higgs mass calculation}
-  \emph{Usual approach:} Spectrum generators calculate r.h.s.\ of
-  \begin{align*}
-    M_h^2 &= m_h^2 + \Delta m_h^2
-  \end{align*}
-  as a function of all SM and SUSY parameters.  Because of large loop
-  corrections $\Delta m_h^2$:
-  \begin{align*}
-    \Delta M_h^{\text{theo}} &\gtrsim (1\ldots 2)\eh{GeV} \quad \text{at least!} \\
-    \Delta M_h^{\text{exp}} &= 0.24\eh{GeV} \ \ \mycite{PDG-2017}
-  \end{align*}
-  Theory calculation needs to improve!  Current workshop series:
-  \\[1em]
-  \begin{center}
-    \fbox{\includegraphics[width=0.8\textwidth]{images/KUTS-Webpage-3-cut.png}}
-  \end{center}
-\end{frame}
-
-% Savebox which contains the the Feynman rules
-\newsavebox{\feynmanrules}
-\sbox{\feynmanrules}{
-\begin{fmffile}{Feynman/higgs} % file name and path
-  \fmfset{thin}{.8pt}
-  \fmfset{wiggly_len}{5mm}
-  \fmfset{dash_len}{2.5mm}
-  \fmfset{dot_size}{1thick}
-  \fmfset{arrow_len}{2.5mm}
-  \fmfset{curly_len}{2.5mm}
-
-\begin{fmfgraph*}(60,60)
-  \fmfkeep{htop}
-  \fmfleft{v1}
-  \fmfright{v2}
-  \fmf{higgs}{v1,c1}
-  \fmf{higgs}{c2,v2}
-  \fmf{quark,left,tension=0.5,label=$t$}{c1,c2}
-  \fmf{quark,left,tension=0.5}{c2,c1}
-\end{fmfgraph*}
-
-\begin{fmfgraph*}(60,60)
-  \fmfkeep{hstop}
-  \fmfleft{v1}
-  \fmfright{v2}
-  \fmf{higgs}{v1,c1}
-  \fmf{higgs}{c2,v2}
-  \fmf{scalar,left,tension=0.5,label=$\tilde{t}_i$}{c1,c2}
-  \fmf{scalar,left,tension=0.5}{c2,c1}
-\end{fmfgraph*}
-
-\begin{fmfgraph*}(60,60)
-  \fmfkeep{hstopA}
-  \fmfleft{v1}
-  \fmfright{v2}
-  \fmf{higgs}{v1,c,v2}
-  \fmf{scalar,right,tension=0.8,label=$\tilde{t}_i$}{c,c}
-\end{fmfgraph*}
-
-\begin{fmfgraph*}(60,60)
-  \fmfkeep{htoptad}
-  \fmfleft{v1}
-  \fmfright{v2}
-  \fmftop{t1}
-  \fmf{higgs}{v1,c,v2}
-  \fmffreeze
-  \fmf{higgs}{c,c1}
-  \fmf{quark,right,tension=0.3,label=$t$}{c1,c2}
-  \fmf{quark,right,tension=0.3}{c2,c1}
-  \fmf{phantom,tension=10}{c2,t1}
-\end{fmfgraph*}
-
-\begin{fmfgraph*}(60,60)
-  \fmfkeep{hstoptad}
-  \fmfleft{v1}
-  \fmfright{v2}
-  \fmftop{t1}
-  \fmf{higgs}{v1,c,v2}
-  \fmffreeze
-  \fmf{higgs}{c,c1}
-  \fmf{scalar,right,tension=0.3,label=$\tilde{t}_i$}{c1,c2}
-  \fmf{scalar,right,tension=0.3}{c2,c1}
-  \fmf{phantom,tension=10}{c2,t1}
-\end{fmfgraph*}
-\end{fmffile}
-}
-
-\begin{frame}{Higgs mass at 1-loop level}
-  In the MSSM the following diagrams give the dominant contribution to
-  $M_h$ at the 1-loop level:
-  \begin{align*}
-    (\Delta m_h^2)^{1L} &= -\Sigma_h^{1L}(p^2) + \frac{t_h^{1L}}{v} \\
-    &= \fmfvcenter{htop} + \fmfvcenter{hstop} + \fmfvcenter{hstopA} \\
-    &\phantom{={}} + \fmfvcenter{htoptad} + \fmfvcenter{hstoptad} \\
-    &\approx \frac{12 m_t^2 y_t^2}{(4\pi)^2} \left(
-      \ln\frac{m_{\tilde{t}}^2}{m_t^2}
-      + \frac{X_t^2}{m_{\tilde{t}}^2}
-      - \frac{X_t^4}{12 m_{\tilde{t}}^4}
-    \right)
-    \quad \text{for} \quad m_{\tilde{t}_1} = m_{\tilde{t}_2}, p^2 = 0
-  \end{align*}
-\end{frame}
-
-\begin{frame}{Higgs mass at 1-loop level}
-  \begin{align*}
-    (\Delta m_h^2)^{1L} &\approx
-    \frac{12 m_t^2 y_t^2}{(4\pi)^2} \left(
-      \ln\frac{m_{\tilde{t}}^2}{m_t^2}
-      + \frac{X_t^2}{m_{\tilde{t}}^2}
-      - \frac{X_t^4}{12 m_{\tilde{t}}^4}
-    \right) + O(p^2)
-  \end{align*}
-  $X_t = A_t - \mu/t_\beta$ = stop mixing parameter
-  % 24 mt^4 / (16 Pi^2 v^2) (Log[MS^2/mt^2] + Xt^2/MS^2 - Xt^4/(12 MS^4))
-  \\[1em]
-  \emph{Observations:}
-  \begin{itemize}
-  \item logarithmically enhanced by $m_{\tilde{t}} / m_t$
-  \item maximal for $X_t \approx \sqrt{6} m_{\tilde{t}}$
-  \item high sensitivity on $m_t$, due to prefactor $m_t^2 y_t^2 = 2 m_t^4/v^2$
-  \item ambiguity of definition of $m_t$: pole mass or \DRbar\ mass? \\
-    $M_t \approx 173.3\eh{GeV}$, $m_t^{\DRbar} \approx 165\eh{GeV}$ \\
-    $\Rightarrow$ huge theoretical uncertainty!\\
-    $\Rightarrow$ 2-loop calculation needed to resolve this ambiguity
-  \item to get $M_h \approx 125\eh{GeV}$, $m_{\tilde{t}} \gtrsim 1\eh{TeV}$ needed
-    (see later)
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Higgs mass at 2-loop level}
-  Known contributions: $O(\as (\at + \ab) + (\at+\ab)^2 + \atau^2)$
-  for $p^2 = 0$ \mycite{hep-ph/0105096,hep-ph/0112177}
-  \\[1em]
-  \includegraphics[width=0.6\textwidth]{images/atas}\\[1em]
-  \includegraphics[width=\textwidth]{images/atat}
-\end{frame}
-
-\begin{frame}{Higgs mass at 2-loop level}
-  \begin{align*}
-    (\Delta m_h^2)^{2L} &\approx
-    \frac{m_t^2 y_t^4}{(4\pi)^4} \left(
-      c_1 \ln^2\frac{\MS^2}{m_t^2}
-      + c_2 \ln\frac{\MS^2}{m_t^2}
-      + c_3
-    \right) \\
-    & +
-    \frac{m_t^2 y_t^2 g_3^2}{(4\pi)^4} \left(
-      c_4 \ln^2\frac{\MS^2}{m_t^2}
-      + c_5 \ln\frac{\MS^2}{m_t^2}
-      + c_6
-    \right)
-  \end{align*}
-  \emph{Observations:}
-  \begin{itemize}
-  \item logarithmically enhanced by $\MS / m_t$
-  \item still high sensitivity on $m_t$
-  \item ambiguity of definition of $m_t$ is resolved
-  \item ambiguity of definition of $\as$: $\as^\SM(M_Z)$, $\as^\MSSM(\MS)$, \ldots ? \\
-    $\Rightarrow$ 3-loop calculation needed to resolve this ambiguity
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Higgs mass at 3-loop level}
-  Known contributions: $O(\at\as^2)$ for $p^2 = 0$ \mycite{arXiv:1005.5709}
-  \begin{center}
-    \includegraphics[width=0.3\textwidth]{images/h3l-atasas}
-  \end{center}
-  \begin{align*}
-    (\Delta m_h^2)^{3L} &\approx
-    \frac{m_t^2 y_t^2 g_3^4}{(4\pi)^6} \left(
-      c_7 \ln^3\frac{\MS^2}{m_t^2}
-      + c_8 \ln^2\frac{\MS^2}{m_t^2}
-      + c_9 \ln\frac{\MS^2}{m_t^2}
-      + c_{10}
-    \right)
-  \end{align*}
-  \emph{Observations:}
-  \begin{itemize}
-  \item logarithmically enhanced by $\MS / m_t$
-  \item still high sensitivity on $m_t$
-  \item ambiguity of definition of $m_t$ is resolved
-  \item ambiguity of definition of $\as$ is resolved
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Summary of fixed loop order calculations}
-  Typical order of magnitude of loop contributions (depends on
-  parameter scenario):
-  \begin{align*}
-    M_h &= m_h + \Delta m_h^{1L} + \Delta m_h^{2L} + \Delta m_h^{3L} + \cdots \\
-    &\approx [91 + O(20\ldots 30) + O(2\ldots 4) + O(1\ldots 2)] \eh{GeV}
-  \end{align*}
-  \emph{Advantages:}
-  \begin{itemize}
-  \item includes logarithmic, non-logarithmic and suppressed terms of
-    the order $O(v^2/\MS^2)$ at fixed loop order
-  \item precise prediction if $\MS \sim m_t$
-  \end{itemize}
-  \emph{Problem:}
-  \begin{itemize}
-  \item large logarithmic corrections, if $\MS \gg m_t$ \\
-    $\Rightarrow$ slow convergence of perturbation series \\
-    $\Rightarrow$ large theoretical uncertainty, ($1$--$2\eh{GeV}$, or
-    more) \\
-    $M_h^{\text{exp}} = (125.09 \pm 0.24)\eh{GeV}$
-  \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{in an EFT}
-
-\begin{frame}{Contents}
-  \tableofcontents[
-  currentsection,
-  currentsubsection,
-  subsectionstyle=show/shaded/hide]  
-\end{frame}
-
-\begin{frame}{Higgs mass calculation in an EFT}
-  \emph{Idea:} Integrate out SUSY particles at $\MS$ (expand in $v^2/\MS^2$) \\
-  $\Rightarrow$ $\lambda(\MS)$ is fixed by the MSSM
-  (Remember: in the SM $m_h^2 = \lambda v^2$) \\
-  $\Rightarrow$ effectively: separation of scales $\MS$ and $M_t$.
-  \begin{center}
-    \includegraphics[width=0.5\textwidth]{images/mssm-sm-tower-eft}
-  \end{center}
-\end{frame}
-
-\begin{frame}{EFT procedure}
-  Match all renormalized $n$-point functions at $p^2 = v^2 = 0$, $Q =
-  \MS$ of the SM and MSSM:
-  \begin{align*}
-    \partial_{p^2}^{(k)}\Gamma_{h,\ldots,h}^{\MSSM,(n)}
-    = \partial_{p^2}^{(k)}\Gamma_{h,\ldots,h}^{\SM,(n)}
-  \end{align*}
-  $\Rightarrow$
-  \begin{align*}
-    \lambda(M_S) &= \frac{1}{4}\left[g_Y^{2} + g_2^2\right] c^2_{2\beta}
-    + \Delta \lambda^{1L} + \Delta \lambda^{2L} + \cdots
-  \end{align*}
-  RG running of $\lambda(\MS)$ to $Q=M_t$.\\
-  Calculation of $M_h$ in the Standard Model:
-  \begin{align*}
-    (M_h^\SM)^2 &= \lambda(M_t) v^2 + (\Delta m_h^2)^{1L}
-    + (\Delta m_h^2)^{2L} + \cdots
-  \end{align*}
-\end{frame}
-
-\begin{frame}{EFT avoids large logarithmic corrections}
-  \begin{enumerate}
-  \item Calculate $\lambda$ at $Q = \MS$:
-    \begin{align*}
-      \lambda(Q) &= \frac{1}{4}\left[g_Y^{2} + g_2^2\right] c^2_{2\beta}
-      + \frac{12 m_t^2 y_t^2}{(4\pi)^2 v^2} \left[
-        \ln\frac{\MS^2}{Q^2} + \frac{X_t^2}{\MS^2} - \frac{X_t^4}{12 \MS^4}
-      \right]
-      + \cdots
-    \end{align*}
-    $\Rightarrow$ \textcolor{darkgreen}{no large logs}
-  \item RG running from $Q = \MS$ $\rightarrow M_t$.\\
-    $\Rightarrow$ \textcolor{darkgreen}{logs are resummed to all orders}
-  \item Calculate $M_h$ in the SM at $Q = M_t$:
-    \begin{align*}
-      (M_h^\SM)^2 &= \lambda v^2 + \frac{12 m_t^2 y_t^2}{(4\pi)^2 v^2} \ln\frac{Q^2}{m_t^2} + \cdots
-    \end{align*}
-    $\Rightarrow$ \textcolor{darkgreen}{no large logs}
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}{Summary of EFT approach}
-  Typical order of magnitude of loop contributions (depends on
-  parameter scenario, here $X_t = 0$, $\MS = 20\eh{TeV}$):
-  \begin{align*}
-    M_h &= m_h + \Delta m_h^{1L} + \Delta m_h^{2L} + \cdots \\
-    &= \sqrt{\lambda(M_t)} v + \Delta m_h^{1L} + \Delta m_h^{2L} + \cdots \\
-    &\approx [O(124) + O(0.5\ldots 1) + O(0.1\ldots 0.2)] \eh{GeV}\\
-    &= \sqrt{\lambda(\MS)} v + \text{logs} + \Delta m_h^{1L} + \Delta m_h^{2L} + \cdots \\
-    &\approx [O(84) + O(40) + O(0.5\ldots 1) + O(0.1\ldots 0.2)] \eh{GeV}
-  \end{align*}
-  \emph{Advantages:}
-  \begin{itemize}
-  \item large logarithmic fixed order loop corrections are avoided
-  \item large logarithms $\propto\ln(M_S/M_t)$ are resummed to all orders
-  \end{itemize}
-  \emph{Disadvantage:} usually terms $O(v^2/M_S^2)$ are neglected \\
-  $\Rightarrow$ imprecise when $v \sim \MS$
-  $\Rightarrow$ then large theoretical uncertainty
-\end{frame}
-
-\begin{frame}{Comparison of fixed-order and EFT approaches}
-  \begin{center}
-    \includegraphics[width=0.6\textwidth]{{{plots/uncertainties/Mh_MS_TB-5_Xt-0_FO_EFT}}}
-  \end{center}
-\end{frame}
-
-\begin{frame}{Summary of fixed-order and EFT approaches}
-  \begin{center}
-    \begin{tabular}{lcc}
-      \toprule
-                  & low $\MS$ & high $\MS$ \\
-                  & $\MS \lesssim 2\eh{TeV}$ & $\MS \gtrsim 2\eh{TeV}$ \\
-      \midrule
-      fixed-order & \ok       & \notok     \\
-      EFT         & \notok    & \ok        \\
-      ? mixed     & \ok       & \ok        \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-  \vspace{2em}
-  Q: Can the fixed-order and EFT approaches be combined? \\[1em]
-  A: Yes!  \mycite{arXiv:1312.4937, arXiv:1609.00371}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{in a mixed approach}
-
-\begin{frame}{Contents}
-  \tableofcontents[
-  currentsection,
-  currentsubsection,
-  subsectionstyle=show/shaded/hide]  
-\end{frame}
-
-\begin{frame}{Mixed fixed-order and EFT approaches}
-  \emph{Goal:} resum large logarithms \emph{and} include suppressed
-  $O(v^2/\MS^2)$ terms
-  \\[2em]
-  \emph{Two known approaches:}
-  \begin{itemize}
-  \item FeynHiggs \mycite{arXiv:1312.4937}: Replace logs from
-    fixed-order calculation by resummed logs
-    \begin{align*}
-      M_h^2 = (M_h^2)_{\text{fixed-order}} - (M_h^2)_{\text{logs}} + (M_h^2)_{\text{resummed logs}}
-    \end{align*}
-  \item FlexibleEFTHiggs \mycite{arXiv:1609.00371}: Incorporate
-    $O(v^2/\MS^2)$ terms into $\lambda$ by using the matching
-    condition
-    \begin{align*}
-      (M_h^2)_{\SM} = (M_h^2)_{\MSSM} \qquad \text{at 1L level at } Q = \MS
-    \end{align*}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{FlexibleEFTHiggs approach}
-  \emph{Idea:}
-  \begin{enumerate}
-  \item Determine $\lambda(\MS)$ from the condition
-    \begin{align*}
-      (M_h^2)_{\SM} &= (M_h^2)_{\MSSM}\qquad \text{1L, } Q = \MS
-    \end{align*}
-    \textcolor{darkgreen}{No suppressed terms are neglected.
-      $\Rightarrow$ $\lambda$ contains all $O(v^2/\MS^2)$ suppressed
-      terms}
-  \item RG running of $\lambda(\MS)$ from $\MS \rightarrow M_t$\\
-    \textcolor{darkgreen}{Note: $M_h$ is RG invariant.}
-  \item Calculate $M_h$ in the Standard Model at $Q = M_t$:
-    \begin{align*}
-      M_h^2 = \lambda(M_t) v^2 + (\Delta m_h^2)^{1L}_{\SM}
-    \end{align*}
-    \textcolor{darkgreen}{$\Rightarrow$ $M_h$ contains all suppressed
-      terms.}
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}{FlexibleEFTHiggs -- EFT equivalence}
-  \emph{Proof of equivalence:} Start with matching condition:
-  \begin{align*}
-    (M_h^2)_{\SM} &= (M_h^2)_{\MSSM} \qquad \text{1L, } Q = \MS \\
-    \lambda v^2 + (\Delta m_h^2)^{1L}_{\SM} &= (M_h^2)_{\MSSM}
-  \end{align*}
-  $\Rightarrow$
-  \begin{align*}
-    \lambda(\MS) &= \frac{1}{v^2} \left[ (M_h^2)_{\MSSM} - (\Delta m_h^2)^{1L}_{\SM} \right] \\
-    &= \frac{1}{v^2} \left[
-      (m_h^2)_{\MSSM} + (\Delta m_h^2)^{1L}_{\MSSM} - (\Delta m_h^2)^{1L}_{\SM}
-    \right]
-  \end{align*}
-  Now insert $(m_h^2)_{\MSSM}$ and $(\Delta m_h^2)^{1L}_{\MSSM}$ \ldots
-\end{frame}
-
-\begin{frame}{FlexibleEFTHiggs -- EFT equivalence}
-  Inserting \textcolor{darkgreen}{$(m_h^2)_{\MSSM}$} and
-  \textcolor{red}{$(\Delta m_h^2)^{1L}_{\MSSM}$} for $X_t = 0$:
-  \begin{align*}
-    \lambda(\MS) &=
-    \frac{1}{v^2} \Bigg[
-      \textcolor{darkgreen}{
-      \frac{1}{4}(g_Y^2 + g_2^2) v^2 c_{2\beta}^2} \\
-      &\quad\qquad \textcolor{red}{ + \frac{c_{\alpha}^2}{s_{\beta}^2} (\Delta m_h^2)^{1L}_{\SM}
-        - \frac{c_{\alpha}^2}{s_{\beta}^2} \frac{12 (y_t^{\SM})^2 m_t^2}{(4\pi)^2}
-      B_0(m_h^2,\MS^2,\MS^2) } \\
-      &\quad\qquad - (\Delta m_h^2)^{1L}_{\SM}
-    \Bigg]
-  \end{align*}
-  Now go to the decoupling limit $c_{\alpha}^2/s_{\beta}^2\rightarrow
-  1$ \ldots
-\end{frame}
-
-\begin{frame}{FlexibleEFTHiggs -- EFT equivalence}
-  In the decoupling limit $c_{\alpha}^2/s_{\beta}^2\rightarrow 1$:
-  \begin{align*}
-    \lambda(\MS) &=
-    \frac{1}{4}(g_Y^2 + g_2^2) c_{2\beta}^2
-    - 12 \frac{m_t^2 (y_t^{\SM})^2}{(4\pi)^2 v^2} B_0(m_h^2,\MS^2,\MS^2) \\
-    &= \frac{1}{4} (g_Y^2 + g_2^2) c_{2\beta}^2
-    - 12 \frac{m_t^2 (y_t^\SM)^2}{(4\pi)^2 v^2} \Bigg[ 
-    -\log\frac{\MS^2}{Q^2} + \frac{m_h^2}{6\MS^2} + O\Big(\frac{m_h^4}{\MS^4}\Big)
-    \Bigg] \\
-    &= \frac{1}{4} (g_Y^2 + g_2^2) c_{2\beta}^2
-    + 12 \frac{m_t^2 (y_t^\SM)^2}{(4\pi)^2 v^2} \Bigg[ 
-    \log\frac{\MS^2}{Q^2} \Bigg] + O\Big(\frac{v^2}{\MS^2}\Big) \\
-    &= \lambda^{\text{EFT,tree}} + \Delta\lambda^{\text{EFT},1L} + O\Big(\frac{v^2}{\MS^2}\Big)
-  \end{align*}
-  In the decoupling limit $\lambda(\MS)$ in the FlexibleEFTHiggs
-  approach is equivalent to the EFT approach at 1-loop, up to
-  suppressed terms $O(v^2/\MS^2)$
-\end{frame}
-
-\begin{frame}{Summary FlexibleEFTHiggs approach}
-  \begin{align*}
-    (M_h^2)_{\SM} &= (M_h^2)_{\MSSM} \qquad \text{1L, } Q = \MS
-\intertext{$\Rightarrow$}
-    \lambda(\MS) &=
-    \lambda^{\text{EFT,tree}} + \lambda^{\text{EFT},1L} + O(v^2/\MS^2)
-  \end{align*}
-  \emph{Observations:}
-  \begin{itemize}
-  \item large 1-loop logarithms cancel in matching condition
-  \item for $v=p=0$ FlexibleEFTHiggs is identical to a 1-loop EFT
-    calculation
-  \item all suppressed terms are incorporated in $\lambda$
-  \item RG running resums (N)LL to all orders
-  \end{itemize}
-  \textcolor{darkgreen}{$\Rightarrow$ FlexibleEFTHiggs leads to a
-    correct Higgs mass prediction at the full 1-loop level (including
-    suppressed terms) with additional (N)LL resummation.}
-\end{frame}
-
-\begin{frame}{Comparison of the three approaches}
-  \begin{center}
-    \includegraphics[width=0.49\textwidth]{{{plots/uncertainties/Mh_MS_TB-5_Xt-0}}}
-    \hfill
-    \includegraphics[width=0.49\textwidth]{{{plots/FlexibleEFTHiggs-2/scan_Mh_Xt_TB-5_MS-2000}}}
-  \end{center}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Uncertainty estimate}
 
@@ -803,103 +245,11 @@
   \tableofcontents[currentsection]  
 \end{frame}
 
-\begin{frame}{Ways to estimate the theoretical uncertainty}
-  \emph{Good ansatz:} Change the calculation by higher orders beyond
-  the calculational accuracy.
-  \\
-  \emph{Examples:}
-  \begin{itemize}
-  \item variation of the unphysical renormalization scale(s)
-  \item change $m_t$ or $\as$ by higher orders
-  \item re-parametrization of $M_h$
-  \end{itemize}
-  % \vspace{1em}
-  \emph{Potential pitfalls:}
-  \begin{itemize}
-  \item some changes alone are an under-estimation of the uncertainty
-    $\rightarrow$ a combination of multiple changes should be used
-  \item potential over-estimation of the uncertainty when large
-    cancellations occur at higher orders
-  \item some changes are sensitive to the same kind of higher order
-    contributions $\rightarrow$ potential ``double counting''
-  \item new higher order dependencies might be difficult to estimate\\
-    Example: How would one estimate $\as$ dependence of $M_h^{2L}$
-    when only $M_h^{1L}$ is known?
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Example: under-estimation of the uncertainty}
-  The variation of the renormalization scale alone might be an
-  under-estimation of the uncertainty:
-  \begin{center}
-    \includegraphics[width=0.8\textwidth]{plots/SPheno-FS-uncertainty/scale_MSSM_yt_variants}
-  \end{center}
-\end{frame}
-
-\begin{frame}{Example: over-estimation of the uncertainty}
-  When large cancellations between the same kind of corrections from
-  different sources occur, including only one source might lead to an
-  over-estimation:
-  \begin{center}
-    \includegraphics[width=0.8\textwidth]{plots/contributions/scan_Mh_MS_TB-5_Xt-0_contributions}
-  \end{center}
-\end{frame}
-
-\begin{frame}{Higgs mass uncertainty estimate}
-  \emph{fixed-order:}
-  \begin{itemize}
-  \item $|M_h^{2L}(Q_\pole = \MS/2) - M_h^{2L}(Q_\pole = 2\MS)|$
-  \item $|M_h^{2L}(y_t^{1L}) - M_h^{2L}(y_t^{2L})|$
-  \end{itemize}
-  \emph{EFT (SUSYHD):}
-  \begin{itemize}
-  \item $|M_h^{2L}(Q_\pole = M_t/2) - M_h^{2L}(Q_\pole = 2M_t)|$
-  \item $|M_h^{2L}(y_t^{2L}) - M_h^{2L}(y_t^{3L})|$
-  \item $|M_h^{2L}(Q_{\text{match}} = \MS/2) - M_h^{2L}(Q_{\text{match}} = 2\MS)|$
-  \item $|M_h^{2L} - M_h^{2L}(\lambda \rightarrow \lambda(1 + v^2/\MS^2))|$
-  \end{itemize}
-  \emph{FlexibleEFTHiggs:}
-  \begin{itemize}
-  \item $|M_h^{2L}(Q_\pole = M_t/2) - M_h^{2L}(Q_\pole = 2M_t)|$
-  \item $|M_h^{2L}(y_t^{2L}) - M_h^{2L}(y_t^{3L})|$
-  \item $|M_h^{2L}(Q_{\text{match}} = \MS/2) - M_h^{2L}(Q_{\text{match}} = 2\MS)|$
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Higgs mass uncertainty estimate}
-  \begin{center}
-    % \includegraphics[width=0.49\textwidth]{{{plots/uncertainties/Mh_MS_TB-5_Xt-0}}}
-    \includegraphics[width=0.7\textwidth]{{{plots/uncertainties/DMh_MS_TB-5_Xt-1}}}
-  \end{center}
-\end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Summary}
 
 \begin{frame}{Summary}
-  \emph{Supersymmetry} is still viable, but LHC continuously excludes
-  light SUSY scenarios\\[1em]
-  %
-  \emph{Approaches to calculate $M_h$}:
-  \begin{center}
-    \begin{tabular}{lcc}
-      \toprule
-                  & low $\MS$ & high $\MS$ \\
-                  & $\MS \lesssim 2\eh{TeV}$ & $\MS \gtrsim 2\eh{TeV}$ \\
-      \midrule
-      fixed-order & \ok       & \notok     \\
-      EFT         & \notok    & \ok        \\
-      mixed       & \ok       & \ok        \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-  \emph{Uncertainty of $M_h$ in SUSY:}
-  \begin{itemize}
-  \item tricky to estimate and still ongoing effort!
-  \item $\Delta M_h \gtrsim 1$--$2\eh{GeV}$ at least, but continuously
-    improves
-  \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -909,258 +259,6 @@
 \begin{frame}[noframenumbering]
   \begin{center}
     \Huge Backup
-  \end{center}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[noframenumbering]{Effect of higher-dimensional operators}
-  \begin{figure}
-    \centering
-    \includegraphics[width=0.49\textwidth]{plots/6dim-Operators/delta-mh-vs-MS-tb-20-M3-MS}
-    \hfill
-    \includegraphics[width=0.49\textwidth]{plots/6dim-Operators/delta-mh-vs-MS-tb-20-M3-2-MS}
-  \end{figure}
-  $\tan\beta = 20$, $X_t = \sqrt{6}\,\MS$
-  \\\mycite{1703.08166}
-\end{frame}
-
-\begin{frame}[noframenumbering]{Effect of higher-dimensional operators}
-  \begin{figure}
-    \centering
-    \includegraphics[width=0.49\textwidth]{plots/6dim-Operators/delta-mh-vs-Xt-tb-20-M3-2000-MS-1-TeV}
-    \hfill
-    \includegraphics[width=0.49\textwidth]{plots/6dim-Operators/delta-mh-vs-Xt-tb-20-M3-MS-MS-1-TeV.pdf}
-  \end{figure}
-  $\MS = 1\eh{TeV}, \tan\beta = 20$
-  \\\mycite{1703.08166}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[noframenumbering]{Numerical comparison}
-  \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{plots/FlexibleEFTHiggs/Mh_MS_TB-5_Xt-0}
-  \end{figure}
-  $\tan\beta = 5$, $X_{t,b,\tau} = 0$
-\end{frame}
-
-\begin{frame}[noframenumbering]{Numerical comparison}
-  \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{plots/FlexibleEFTHiggs/Mh_relative_MS_TB-5_Xt-0}
-  \end{figure}
-  $\tan\beta = 5$, $X_{t,b,\tau} = 0$
-\end{frame}
-
-\begin{frame}[noframenumbering]{Numerical comparison}
-  \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{plots/FlexibleEFTHiggs/Mh_Xt_TB-5_MS-2000}
-  \end{figure}
-  $\tan\beta = 5$, $M_S = 2 \eh{TeV}$, $X_{b,\tau} = 0$
-\end{frame}
-
-\begin{frame}[noframenumbering]{Numerical comparison}
-  \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{plots/FlexibleEFTHiggs/Mh_relative_Xt_TB-5_MS-2000}
-  \end{figure}
-  $\tan\beta = 5$, $M_S = 2 \eh{TeV}$, $X_{b,\tau} = 0$\\
-  For large $X_t$ deviation from HSSUSY-1L due to $p\neq 0 \neq v$.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[noframenumbering]{Uncertainty estimation of original FlexibleEFTHiggs-1L}
-  \begin{center}
-    \begin{minipage}[t]{0.6\textwidth}
-      \includegraphics[width=\textwidth]{plots/FlexibleEFTHiggs/DMh_tower-1L_MS_TB-5_Xt-0}\\
-      \includegraphics[width=\textwidth]{plots/FlexibleEFTHiggs/DMh_tower-1L_Xt_TB-5_MS-2000}
-    \end{minipage}\hfill
-  \end{center}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[noframenumbering]{Incorrect 2L logs in original FlexibleEFTHiggs-1L}
-  Matching condition:
-  \begin{align*}
-    \lambda &\leftarrow \frac{1}{v^2} \left[
-      (m_h^\SM)^2 + (M_h^\text{MSSM})^2 - (M_h^\SM)^2
-    \right]
-  \end{align*}
-  Expansion of momentum iteration up to 1L level:
-  \begin{align*}
-    \lambda &= \frac{1}{v^2} \Big[
-      (m_h^\MSSM)^2
-      + \Delta m_{h,\MSSM}^2
-      - \Delta m_{h,\SM}^2
-      + O(\hbar^2)
-    \Big]
-  \end{align*}
-  with
-  \begin{align*}
-    \Delta m_{h,\MSSM}^2 &= -\Sigma^{1L}_{\MSSM} + t_{\MSSM}^{1L}/v_\MSSM \\
-    \Delta m_{h,\SM}^2 &= -\Sigma^{1L}_{\SM} + t^{1L}_{\SM}/v_\SM
-  \end{align*}
-\end{frame}
-
-\begin{frame}[noframenumbering]{Incorrect 2L logs in original FlexibleEFTHiggs-1L}
-  \emph{Problem:} $y_t^{\MSSM} = y_t^\SM/s_\beta [1 + O(\hbar)] $\\
-  $\Rightarrow$
-  \begin{align*}
-    \Delta m_{h,\MSSM}^2 - \Delta m_{h,\SM}^2 &\propto
-    \hbar \Bigg[ (y_t^\MSSM s_\beta)^4 \log\frac{m_t}{M_S} - (y_t^\SM)^4 \log\frac{m_t}{M_S}\Bigg] \\
-    &= \hbar \Bigg[0\ + \propto \hbar y_t^4 \log\frac{m_t}{M_S} + O(\hbar^2) \Bigg] \\
-    &= O(\hbar^2 y_t^4 \log\frac{m_t}{M_S})
-  \end{align*}
-  $\Rightarrow$\\
-  incorrect 2L logs remain in FlexibleEFTHiggs-1L
-\end{frame}
-
-\begin{frame}[noframenumbering]{Summary original FlexibleEFTHiggs-1L}
-  \emph{Advantages:}
-  \begin{itemize}
-  \item[\ok] easily automatizable
-  \item[\ok] correctly resums LL
-  \item[\ok] all non-log terms correct at 1L, \\
-    including all terms $O(v^n/M_S^n)$
-  \end{itemize}
-  \emph{Disadvantage:}
-  \begin{itemize}
-  \item[\notok] incorrect 2L logs $O(\hbar^2 \log(m_t/M_S))$
-  \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[noframenumbering]{Improved FlexibleEFTHiggs-1L}
-  strict handling of loop orders in matching condition
-  \begin{align*}
-    (M_h^\SM)^2 &= \lambda v^2 - \Sigma^{\SM}_h((m_h^\MSSM)^2) + \frac{t_h^\SM}{v}\\
-    (M_h^\MSSM)^2 &= \text{EV of } \left[M_\phi^{(1)} - \Sigma^{\MSSM}_\phi((m_h^\MSSM)^2) + \tilde{t}_\phi^\MSSM\right]
-  \end{align*}
-  with
-  \begin{align*}
-    M_\phi^{(1)} &= \text{tree-level mass matrix w/ 1L parameters} \\
-    \Sigma^{\MSSM}_\phi &= \text{1L self-energy w/ 0L parameters} \\
-    t^{\MSSM}_{\phi_i} &= \text{1L tadpole w/ 0L parameters} \\
-    m_h^\MSSM &= \text{tree-level mass w/ 0L parameters} \\
-    (\tilde{t}^{\MSSM}_\phi)_i &= t^{\MSSM}_{\phi_i} / v_i
-  \end{align*}
-\end{frame}
-
-\begin{frame}[noframenumbering]{Improved FlexibleEFTHiggs-1L}
-  \emph{Advantages:}
-  \begin{itemize}
-  \item[\ok] easily automatizable
-  \item[\ok] correctly resums LL + NLL
-  \item[\ok] all non-log terms correct at 1L, \\
-    including all terms $O(v^n/M_S^n)$
-  \end{itemize}
-  \emph{Disadvantage:}
-  \begin{itemize}
-  \item[\meh] non-logarithmic 2L terms arise at $M_S$
-  \item[\notok] difficult to add 2L corrections
-  \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[noframenumbering]{Numerical comparison}
-  \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{plots/FlexibleEFTHiggs/Mh_uncertainties_MS_TB-5_Xt--2}
-  \end{figure}
-  $\tan\beta = 5$, $X_t = -2 M_S$, $X_{b,\tau} = 0$
-\end{frame}
-
-\begin{frame}[noframenumbering]{Numerical comparison}
-  \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{plots/FlexibleEFTHiggs/Mh_uncertainties_relative_MS_TB-5_Xt--2}
-  \end{figure}
-  $\tan\beta = 5$, $X_t = -2 M_S$, $X_{b,\tau} = 0$
-\end{frame}
-
-\begin{frame}[noframenumbering]{Numerical comparison}
-  \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{plots/FlexibleEFTHiggs/lambda_MS_TB-5_Xt-0}
-  \end{figure}
-  $\tan\beta = 5$, $X_{t,b,\tau} = 0$
-\end{frame}
-
-\begin{frame}[noframenumbering]{Numerical comparison}
-  \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{plots/FlexibleEFTHiggs/lambda_MS_TB-5_Xt--2}
-  \end{figure}
-  $\tan\beta = 5$, $X_t = -2 M_S$, $X_{b,\tau} = 0$
-\end{frame}
-
-\begin{frame}[noframenumbering]{Numerical comparison}
-  \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{plots/FlexibleEFTHiggs/lambda_Xt_TB-5_MS-2000}
-  \end{figure}
-  $\tan\beta = 5$, $M_S = 2\eh{TeV}$, $X_{b,\tau} = 0$
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[noframenumbering]
-  \begin{center}
-    \Large Equivalence of pure EFT and FlexibleEFTHiggs
-  \end{center}
-\end{frame}
-
-\begin{frame}[noframenumbering]{Equivalence pure EFT and FlexibleEFTHiggs $O(\hbar y_t^4)$}
-  \begin{align*}
-    M_h^{\SM} &\overset{!}{=} M_h^\text{MSSM} \quad \text{at} \quad Q = M_S, 1L
-  \end{align*}
-  where
-  \begin{align*}
-    (M_h^{\SM})^2 &= \lambda v^2 - {\color{red}\Sigma^{\SM}_h} + t_h^\SM/v \\
-    t_h^\SM/v &= {\color{darkgreen}-6 (y_t^\SM)^2 A_0(m_t) / (4\pi)^2}
-  \intertext{and [neglecting stop mass mixing $O(m_t X_t/M_S^2)$]}
-    (M_h^\MSSM)^2 &= \frac{1}{4} (g_Y^2 + g_2^2) (v_u^2 + v_d^2) c^2_{2\beta}
-    - \Sigma_h^\MSSM + t_h^\MSSM/v\\
-    \Sigma_h^\MSSM &= {\color{red}\Sigma_h^\SM \frac{c^2_\alpha}{s^2_\beta}}
-    + 3 \frac{(y_t^\SM)^2}{(4\pi)^2} \frac{c^2_\alpha}{s^2_\beta} \Big\{
-       {\color{blue}A_0(m_{Q_3}) + A_0(m_{U_3})}\\
-       &\phantom{={}} + 2 m_t \big[ B_0(m_{Q_3},m_{Q_3}) + B_0(m_{U_3},m_{U_3}) \big]
-    \Big\}\\
-    t_h^\MSSM/v &= -3 \frac{(y_t^\SM)^2}{(4\pi)^2} \frac{c^2_\alpha}{s^2_\beta} \Big[
-       {\color{darkgreen}2 A_0(m_t)} {\color{blue}- A_0(m_{Q_3}) - A_0(m_{U_3})}\Big]
-  \end{align*}
-\end{frame}
-
-\begin{frame}[noframenumbering]{Equivalence pure EFT and FlexibleEFTHiggs $O(\hbar y_t^4)$}
-  in SM limit $\frac{c^2_\alpha}{s^2_\beta} \rightarrow 1$\\
-  $\Rightarrow$ 
-  \begin{align*}
-    \lambda &= \frac{1}{4} (g_Y^2 + g_2^2) c_{2\beta}^2\\
-    &\phantom{={}}
-    - 3 \frac{(y_t^\SM)^4}{(4\pi)^2} \Big[
-    B_0(p^2,m_{Q_3},m_{Q_3}) + B_0(p^2,m_{U_3},m_{U_3}) \Big]\\
-    &=
-    \frac{1}{4} (g_Y^2 + g_2^2) c_{2\beta}^2\\
-    &\phantom{={}} - 3 \frac{(y_t^\SM)^4}{(4\pi)^2} \Big[
-    -\log\frac{m^2_{Q_3}}{Q^2} + \frac{p^2}{6m^2_{Q_3}} + O\Big(\frac{p^4}{m^4_{Q_3}}\Big)\\
-    &\phantom{={} - 3 \frac{(y_t^\SM)^4}{(4\pi)^2} \Big[}
-    - \log\frac{m^2_{U_3}}{Q^2} + \frac{p^2}{6m^2_{U_3}} + O\Big(\frac{p^4}{m^4_{U_3}}\Big) \Big]\\
-    &= [\text{Bagnaschi et.\ al. 2014}]
-    + O\Big(\frac{p^2}{m^2_{Q_3}}\Big)
-    + O\Big(\frac{p^2}{m^2_{U_3}}\Big)
-  \end{align*}
-\end{frame}
-
-\begin{frame}[noframenumbering]
-  \begin{center}
-    \Large Determination of MSSM parameters
   \end{center}
 \end{frame}
 
