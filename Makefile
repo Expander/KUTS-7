@@ -3,7 +3,8 @@
 OUTFILENAME := talk.pdf
 PLOTS       := \
 		$(wildcard plots/HSSUSY/*.pdf) \
-		$(wildcard plots/SplitMSSM/*.pdf)
+		$(wildcard plots/SplitMSSM/*.pdf) \
+		$(wildcard plots/THDM/*.pdf)
 
 TEXDIRS     := $(PLOTSDIR)
 BIBTEX      := bibtex
